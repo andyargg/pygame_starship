@@ -12,7 +12,7 @@ class EnemyBullet(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.bottom = y
         self.rect.centerx = x
-        self.speedy = 5
+        self.speedy = 3.5
         self.bullet_is_animating = False
    
     def animating(self):

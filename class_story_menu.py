@@ -24,7 +24,6 @@ class StoryMenu(Menu):
         waru_list.append(pygame.image.load("assets/narrator/waru_13.png"))
         waru_list.append(pygame.image.load("assets/narrator/waru_14.png"))
 
-
         self.story_index = 0
 
         self.story = self.read_story_file("story.json", story)
@@ -43,21 +42,16 @@ class StoryMenu(Menu):
 
     def next_chat(self):
         self.story_index += 1
-        
         if self.story_index >= len(self.story):
             dialogue = "story completed"
             self.set_dialogue(dialogue)
         else:
             self.label_story.text = self.story[self.story_index]
             
-
-
     def back_chat(self):
-        
         if self.story_index > 0:
             self.story_index -= 1
             self.label_story.text = self.story[self.story_index]
-        
 
     def read_story_file(self, file_path, story):
         with open(file_path, "r") as file:

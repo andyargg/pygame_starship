@@ -53,8 +53,7 @@ class LevelTwo(Level):
             
             
 
-    def game_screen_menu(self):
-        show_screen_paused(create_game_pause, self.screen, self.background)
+    
     
     def handle_enemy_shooter_collisions(self):
         
@@ -87,7 +86,7 @@ class LevelTwo(Level):
             if self.player_shield <= 0:
                 self.open_menu = True
         
-        if self.score > 200 and self.level_completed == False:  
+        if self.score > 3500 and self.level_completed == False:  
             self.level_completed = True
             self.story = "historia_2"
 

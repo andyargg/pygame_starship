@@ -25,7 +25,7 @@ class LevelOne(Level):
 
     def handle_collisions(self):
         super().handle_collisions()
-        if self.score > 100 and self.level_completed == False:  # Si el puntaje supera 1000, guardar el puntaje
+        if self.score > 200 and self.level_completed == False:  # Si el puntaje supera 1000, guardar el puntaje
             self.level_completed = True
             self.story = "historia_2"
             

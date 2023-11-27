@@ -10,12 +10,12 @@ import json
 
 
 class LevelContainer(Menu):
-    def __init__(self, screen, level) -> None:
+    def __init__(self, screen, level, player_name) -> None:
         
         widget_list = []
 
         self.level = level
-   
+        self.player_name = player_name
 
         super().__init__(widget_list, screen)
     
@@ -26,10 +26,10 @@ class LevelContainer(Menu):
         except Exception as e:
             print("error")
 
-        # Buscar el diccionario correspondiente
-     
-        if 'user_name' in data_dict:
-            data_dict['time'] = time
+        for element in data_dict:
+            if 'user_name' in element and element['user_name'] == self.player_name:
+                element['time'] = time
+
             
         try:
             with open("data.json", 'w', encoding='utf-8') as archivo:

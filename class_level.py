@@ -36,18 +36,11 @@ class Level:
         pygame.mixer.music.play(-1)   
         pygame.mixer.music.set_volume(0.2)  
 
-        
-        self.seconds = 0
-        self.minutes = 0
-
-
-    
+        self.last_time_update = pygame.time.get_ticks()
 
         
+        self.timer = 0
 
-
-        
-        
             
     def spawn_initial_enemies(self):
       
@@ -107,13 +100,17 @@ class Level:
     
     def update_timer(self):
         self.current_time = pygame.time.get_ticks()
-        self.seconds = (self.current_time/1000) 
-   
-        return self.seconds
+        if self.current_time - self.last_time_update >= 1000:
+            self.last_time_update = self.current_time
+            self.timer += 1
+            
+        
+        return self.timer
+        
+        
 
         
     def update(self, event_list):
-        
             self.update_timer()
             self.handle_events(event_list)    
             self.handle_collisions()
@@ -123,7 +120,6 @@ class Level:
             self.all_sprites.draw(self.screen)
             draw_text(self.screen, str(self.score), 25, ANCHO_VENTANA // 2, 10)
             draw_shield_bar(self.screen, 5, 5, self.player_shield, VERDE_AZULADO)
-            
             pygame.display.flip()
             
         

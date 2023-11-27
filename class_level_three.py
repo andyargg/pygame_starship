@@ -59,9 +59,6 @@ class LevelThree(Level):
         self.boss_list_group.add(self.enemy_boss)
         self.all_sprites.add(self.enemy_boss)
     
-    
-    def game_screen_menu(self):
-        show_screen_paused(create_game_pause, self.screen, self.background)
 
     def shoot_delay(self):
         current_time = pygame.time.get_ticks()
@@ -80,7 +77,7 @@ class LevelThree(Level):
         
         for hits in hits_in_boss:
             self.update_score(10)
-            self.boss_shield -=50
+            self.boss_shield -=5
             self.enemy_boss.boss_is_animating = True
             if self.boss_shield == 0:
                 self.level_completed = True
@@ -103,10 +100,11 @@ class LevelThree(Level):
                 self.open_menu = True
     def update(self, events_list):
 
-        draw_shield_bar(self.screen, 795, 5, self.boss_shield, ROJO)
         self.boss_bullets.draw(self.screen)
         self.shoot_delay()
+        draw_shield_bar(self.screen, 795, 5, self.boss_shield, ROJO)
         pygame.display.flip()
+
         super().update(events_list)
     
 
